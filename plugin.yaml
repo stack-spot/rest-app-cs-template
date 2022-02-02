@@ -1,0 +1,9 @@
+name: skynet-dotnet-rest-app-cs-template
+description: dotnet rest application base plugin
+types:
+  - app-template
+inputs:
+  - label: Project name
+    type: text
+    name: project_name
+    default: project-name
