@@ -13,7 +13,7 @@ class RestTemplate(Template):
         return metadata
 
     def post_hook(self, metadata: Metadata):
-        project_name = metadata.inputs['project_name']
+        project_name = metadata.global_inputs['project_name']
         args = ['dotnet', 'new', 'stackspot.rest', '-n', project_name, '-p', project_name, '--force', '-o', metadata.target_path]
         
         print('Creating application...')
