@@ -6,4 +6,5 @@ inputs:
   - label: Project name
     type: text
     name: project_name
+    global: true
     default: project-name
