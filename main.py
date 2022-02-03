@@ -10,6 +10,10 @@ class RestTemplate(Template):
         args = ['dotnet', 'new', '-i', 'StackSpot.Template.Rest', '--force']
         subprocess.run(args)
         
+        print('Installing dotnet-format...')
+        args2 = ['dotnet', 'tool', 'install', '-g', 'dotnet-format']
+        subprocess.run(args2)
+
         return metadata
 
     def post_hook(self, metadata: Metadata):
