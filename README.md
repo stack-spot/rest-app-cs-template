@@ -1,1 +1,1 @@
-# skynet-dotnet-rest-app-cs-template
+# rest-app-cs-template

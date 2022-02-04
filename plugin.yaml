@@ -1,5 +1,5 @@
-name: skynet-dotnet-rest-app-cs-template
-description: dotnet rest application base plugin
+name: rest-app-cs-template
+description: base plugin to develop a full-featured API using C#, .NET and REST, running on a container cluster
 types:
   - app-template
 inputs:
