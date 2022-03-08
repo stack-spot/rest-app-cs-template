@@ -1,0 +1,29 @@
+name: rest-app-cs-template
+description: plugin base para desenvolver uma API completa usando C# e REST, em execução em um cluster de contêiner
+types:
+  - app-template
+inputs:
+  - label: Project name
+    type: text
+    name: project_name
+    global: true
+    default: project-name
+
+displayName: Rest - Template
+
+picture: "template.png"
+
+category: backend, api, rest
+
+compatibility:
+  - net6.0
+
+about: about.md
+
+usage: usage.md
+
+useCase: useCase.md
+
+implementation: implementation.md
+
+technologies: [".NET", "C#"]
