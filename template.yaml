@@ -8,6 +8,12 @@ inputs:
     name: project_name
     global: true
     default: project-name
+  - label: Set Target Framework
+    type: text
+    name: type
+    items:
+      - "net5.0"  
+      - "net6.0"
 
 displayName: Rest - Template
 

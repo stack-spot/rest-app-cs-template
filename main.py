@@ -5,10 +5,20 @@ import subprocess
 
 class RestTemplate(Template):
 
+    version: str
+    command: str
+
     def pre_hook(self, metadata: Metadata) -> Metadata:
-        print('Installing stackspot.rest...')
-        args = ['dotnet', 'new', '-i', 'StackSpot.Template.Rest', '--force']
-        subprocess.run(args)
+        if 'net6.0' in metadata.inputs['type']:
+            self.version = "stackspot.rest"
+            self.command = "StackSpot.Template.Rest"
+        else:
+            self.version = "stackspot.rest.net5"
+            self.command = "StackSpot.Template.Rest.5.0"
+
+            print(f'Installing {self.version}...')
+            args = ['dotnet', 'new', '-i', self.command, '--force']
+            subprocess.run(args)
         
         print('Installing dotnet-format...')
         args2 = ['dotnet', 'tool', 'install', '-g', 'dotnet-format']
@@ -18,7 +28,8 @@ class RestTemplate(Template):
 
     def post_hook(self, metadata: Metadata):
         project_name = metadata.global_inputs['project_name']
-        args = ['dotnet', 'new', 'stackspot.rest', '-n', project_name, '-p', project_name, '--skipRestore', 'true', '--force', '-o', metadata.target_path]
+        
+        args = ['dotnet', 'new', self.version, '-n', project_name, '-p', project_name, '--skipRestore', 'true', '--force', '-o', metadata.target_path]
         
         print('Creating application...')
         subprocess.run(args)
