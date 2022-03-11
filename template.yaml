@@ -8,10 +8,10 @@ inputs:
     name: project_name
     global: true
     default: project-name
-  - label: Set Target Framework
+  - label: Target Framework
     type: text
     default: "net6.0"
-    name: type
+    name: framework
     items:
       - "net5.0"  
       - "net6.0"

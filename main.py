@@ -9,20 +9,22 @@ class RestTemplate(Template):
     command: str
 
     def pre_hook(self, metadata: Metadata) -> Metadata:
-        if 'net6.0' in metadata.inputs['type']:
+        if 'net6.0' in metadata.inputs['framework']:
             self.version = "stackspot.rest"
             self.command = "StackSpot.Template.Rest"
         else:
             self.version = "stackspot.rest.net5"
             self.command = "StackSpot.Template.Rest.5.0"
 
-            print(f'Installing {self.version}...')
-            args = ['dotnet', 'new', '-i', self.command, '--force']
-            subprocess.run(args)
+        print(f'Installing {self.version}...')
+        args = ['dotnet', 'new', '-i', self.command, '--force']
+        subprocess.run(args)
         
         print('Installing dotnet-format...')
-        args2 = ['dotnet', 'tool', 'install', '-g', 'dotnet-format']
+        args2 = ['dotnet', 'tool-manifest']
         subprocess.run(args2)
+        args3 = ['dotnet', 'tool', 'install', '--local', 'dotnet-format']
+        subprocess.run(args3)        
 
         return metadata
 
