@@ -2,6 +2,7 @@ from templateframework.runner import run
 from templateframework.template import Template
 from templateframework.metadata import Metadata
 import subprocess
+import os
 
 class RestTemplate(Template):
 
@@ -18,13 +19,7 @@ class RestTemplate(Template):
 
         print(f'Installing {self.version}...')
         args = ['dotnet', 'new', '-i', self.command, '--force']
-        subprocess.run(args)
-        
-        print('Installing dotnet-format...')
-        args2 = ['dotnet', 'tool-manifest']
-        subprocess.run(args2)
-        args3 = ['dotnet', 'tool', 'install', '--local', 'dotnet-format']
-        subprocess.run(args3)        
+        subprocess.run(args)    
 
         return metadata
 
@@ -35,6 +30,14 @@ class RestTemplate(Template):
         
         print('Creating application...')
         subprocess.run(args)
+
+        print('Installing dotnet-format...')
+        os.chdir(f'{metadata.target_path}/')
+        args2 = ['dotnet', 'new', 'tool-manifest']
+        subprocess.run(args2)
+        args3 = ['dotnet', 'tool', 'install', '--local', 'dotnet-format']
+        subprocess.run(args3)   
+
         print('Application Created.')
 
 if __name__ == '__main__':
