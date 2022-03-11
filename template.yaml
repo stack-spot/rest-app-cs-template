@@ -23,6 +23,7 @@ picture: "template.png"
 category: backend, api, rest
 
 compatibility:
+  - net5.0
   - net6.0
 
 about: about.md
