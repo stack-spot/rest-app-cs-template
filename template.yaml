@@ -10,11 +10,12 @@ inputs:
     default: project-name
   - label: Target Framework
     type: text
-    default: "net6.0"
+    default: "net5.0"
     name: framework
     items:
       - "net5.0"  
-      - "net6.0"
+#     - "net6.0"
+# retornar após liberar a versão nova do dotnet 6.
 
 displayName: Rest - Template
 
