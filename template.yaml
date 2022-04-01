@@ -16,6 +16,19 @@ inputs:
       - "net5.0"  
 #     - "net6.0"
 # retornar após liberar a versão nova do dotnet 6.
+computedInputs: 
+  "version": "{% if inputs.framework == 'net6.0' %}{{'stackspot.rest'}}{% else %}{{'stackspot.rest.net5'}}{% endif %}"
+  "package": "{% if inputs.framework == 'net6.0' %}{{'StackSpot.Template.Rest'}}{% else %}{{'StackSpot.Template.Rest.5.0'}}{% endif %}"
+
+hooks:
+#package / apply template / install dotnet-format
+  - type: run
+    trigger: after-render
+    commands:
+      - dotnet new -i {{computed_inputs.package}} --force
+      - dotnet new {{computed_inputs.version}} -n {{global_inputs.project_name}} -p {{global_inputs.project_name}} -o {{target_path}} --skipRestore true --force      
+      - dotnet new tool-manifest
+      - dotnet tool install --local dotnet-format      
 
 displayName: Rest - Template
 
