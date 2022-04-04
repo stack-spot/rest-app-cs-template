@@ -12,13 +12,14 @@ inputs:
     type: text
     default: "net5.0"
     name: framework
+    global: true
     items:
       - "net5.0"  
-#     - "net6.0"
-# retornar após liberar a versão nova do dotnet 6.
+      - "net6.0"
+
 computedInputs: 
-  "version": "{% if inputs.framework == 'net6.0' %}{{'stackspot.rest'}}{% else %}{{'stackspot.rest.net5'}}{% endif %}"
-  "package": "{% if inputs.framework == 'net6.0' %}{{'StackSpot.Template.Rest'}}{% else %}{{'StackSpot.Template.Rest.5.0'}}{% endif %}"
+  "version": "{% if global_inputs.framework == 'net6.0' %}{{'stackspot.rest'}}{% else %}{{'stackspot.rest.net5'}}{% endif %}"
+  "package": "{% if global_inputs.framework == 'net6.0' %}{{'StackSpot.Template.Rest'}}{% else %}{{'StackSpot.Template.Rest.5.0'}}{% endif %}"
 
 hooks:
 #package / apply template / install dotnet-format
