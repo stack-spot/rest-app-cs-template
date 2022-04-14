@@ -40,6 +40,9 @@ hooks:
       - dotnet new {{computed_inputs.version}} -n {{global_inputs.project_name}} -p {{global_inputs.project_name}} -o {{target_path}} --skipRestore true --force      
       - dotnet new tool-manifest
       - dotnet tool install --local dotnet-format
+  - type: run-script
+    trigger: after-render
+    script: scripts/script.py      
 
 displayName: Rest - Template
 
