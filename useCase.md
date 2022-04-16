@@ -85,3 +85,18 @@ Essa camada contém classes para acessar recursos externos, como sistemas de arq
 ### Camada de Api
 
 Essa camada é um aplicativo de ASP.NET Core 5/6. Essa camada depende das camadas Aplicativo e Infraestrutura, no entanto, a dependência da infraestrutura é apenas para dar suporte à injeção de dependência. Portanto, apenas *Startup.cs* deve fazer referência à infraestrutura.
+
+### Componentes Utilizados
+
+- [AutoMapper](https://automapper.org/)
+- [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
+- [FluentValidation](https://fluentvalidation.net/)
+- [MediatR](https://github.com/jbogard/MediatR)
+- [Moq](https://github.com/moq/moq4)
+- [Shouldly](https://github.com/shouldly/shouldly)
+- [WireMock.Net](https://github.com/WireMock-Net/WireMock.Net)
+- [xunit](https://github.com/xunit/xunit)
+
+## Referências
+- [Clean Architecture: descubra o que é e onde aplicar Arquitetura Limpa](https://www.zup.com.br/blog/clean-architecture-arquitetura-limpa)
+- [Clean Architecture with ASP.NET Core 3.0 • Jason Taylor • GOTO 2019](https://www.youtube.com/watch?v=dK4Yb6-LxAk)
