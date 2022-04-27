@@ -27,17 +27,17 @@ hooks:
     trigger: after-render
     windows:      
       - dotnet new -i {{computed_inputs.package}} --force
-      - dotnet new {{computed_inputs.version}} -n {{global_inputs.project_name}} -p {{global_inputs.project_name}} -o {{target_path | replace('\\','\/')}} --skipRestore true --force      
+      - dotnet new {{computed_inputs.version}} -n {{global_inputs.project_name}} -p {{global_inputs.project_name}} -o '{{target_path | replace('\\','\/')}}' --skipRestore true --force      
       - dotnet new tool-manifest
       - dotnet tool install --local dotnet-format
     linux:
       - dotnet new -i {{computed_inputs.package}} --force
-      - dotnet new {{computed_inputs.version}} -n {{global_inputs.project_name}} -p {{global_inputs.project_name}} -o {{target_path}} --skipRestore true --force      
+      - dotnet new {{computed_inputs.version}} -n {{global_inputs.project_name}} -p {{global_inputs.project_name}} -o '{{target_path}}' --skipRestore true --force      
       - dotnet new tool-manifest
       - dotnet tool install --local dotnet-format
     mac:
       - dotnet new -i {{computed_inputs.package}} --force
-      - dotnet new {{computed_inputs.version}} -n {{global_inputs.project_name}} -p {{global_inputs.project_name}} -o {{target_path}} --skipRestore true --force      
+      - dotnet new {{computed_inputs.version}} -n {{global_inputs.project_name}} -p {{global_inputs.project_name}} -o '{{target_path}}' --skipRestore true --force      
       - dotnet new tool-manifest
       - dotnet tool install --local dotnet-format
   - type: run-script
