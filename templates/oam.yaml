@@ -1,0 +1,13 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: {{project_name | to_kebab}}
+  namespace: default
+spec:
+  components:
+    - name: {{project_name | to_kebab}}
+      type: microservice
+      properties:
+        accountId: ""
+        image: 
+        targetPort: 5001
